@@ -79,3 +79,28 @@ section {
     transition-duration: 0.01ms !important;
   }
 }
+
+@media (min-width: 768px) and (pointer: fine) {
+  body.premium-cursor,
+  body.premium-cursor a,
+  body.premium-cursor button {
+    cursor: none;
+  }
+}
+
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-border-flow {
+  background-size: 220% 220%;
+  animation: border-flow 9s ease-in-out infinite;
+}

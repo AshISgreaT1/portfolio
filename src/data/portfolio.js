@@ -47,30 +47,6 @@ export const intro = {
   closing: 'You can find my contact details here in the portfolio. Hope you like it.'
 };
 
-export const projects = [
-  {
-    title: 'Orbit Notes',
-    description: 'A responsive note-taking app with markdown preview, command palette search, and local-first persistence.',
-    tags: ['React', 'Tailwind', 'LocalStorage'],
-    github: 'https://github.com/aarav-dev/orbit-notes',
-    demo: 'https://orbit-notes-demo.vercel.app'
-  },
-  {
-    title: 'HireTrack Dashboard',
-    description: 'Recruiter-friendly analytics dashboard for tracking applications, interview rounds, and weekly progress.',
-    tags: ['React', 'Charts', 'Vite'],
-    github: 'https://github.com/aarav-dev/hiretrack',
-    demo: 'https://hiretrack-demo.vercel.app'
-  },
-  {
-    title: 'Campus Connect API',
-    description: 'Backend service for student clubs with authentication, event listings, and role-based admin routes.',
-    tags: ['Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/aarav-dev/campus-connect-api',
-    demo: 'https://campus-connect-api.onrender.com'
-  }
-];
-
 export const experiences = [
   {
     company: 'Open Source Contributor',
@@ -84,4 +60,72 @@ export const experiences = [
     date: 'Summer 2025',
     points: ['Built landing pages for hackathon events', 'Integrated forms with Google Sheets workflows', 'Reduced page weight by optimizing images and reusable components']
   }
+];
+
+export const aiPlaygroundModels = [
+  {
+    id: 'cnn-audio-denoiser',
+    label: 'CNN Audio Denoiser',
+    usedFor:
+      'Noise reduction in audio, video, and live video streams using deep learning based denoising techniques and real-time media enhancement.',
+  },
+  {
+    id: 'react-frontend-stack',
+    label: 'React Frontend Stack',
+    usedFor:
+      'Freelance frontend development projects using React.js, Tailwind CSS, JavaScript, Framer Motion, and modern responsive UI design.',
+  },
+  {
+    id: 'hsl-classification-model',
+    label: 'HSL Classification Model',
+    usedFor:
+      'Deep learning based HSL classification with preprocessing, model training, prediction analysis, and classification optimization.',
+  },
+];
+
+export const aiPlaygroundPrompts = [
+  {
+    id: 'noise-reduction',
+    label: 'Noise Reduction using Deep Learning',
+    system: 'Audio/Video · Deep learning',
+    prompt:
+      'AI-based deep learning system capable of reducing unwanted noise from audio, video, and live video streams with real-time processing and media enhancement.',
+    response: `Project focus: learned denoising for noisy media.
+
+Scope covers audio waveforms, encoded video frames, and live capture paths where latency budgets are tight. The pipeline emphasizes real-time inference so streams stay watchable while noise is suppressed—not just offline batch cleanup.
+
+Media enhancement sits alongside reduction: normalize dynamics where helpful, preserve speech intelligibility, and avoid smearing fine detail when the model clamps high-frequency junk.
+
+Good fit when you need production-minded ML: measurable SNR gains, bounded GPU/CPU cost, and a clear story from dataset → training → deployment.`,
+  },
+  {
+    id: 'freelance-frontend',
+    label: 'Freelance Frontend Development',
+    system: 'Product UI · React stack',
+    prompt:
+      'Built responsive modern websites for freelance clients using React.js, Tailwind CSS, JavaScript, Framer Motion, and modern UI/UX practices.',
+    response: `Client work centered on fast, responsive marketing and product surfaces.
+
+Stack: React.js, Tailwind CSS, JavaScript, and Framer Motion—composition-first components, tokenized spacing, and accessible patterns out of the box.
+
+UX habits: mobile-first breakpoints, predictable navigation, and hover/focus states that feel intentional rather than decorative.
+
+Delivery: tight handoffs with readable code structure so iterations stay cheap when copy, sections, or brand accents change mid-project.`,
+  },
+  {
+    id: 'hsl-classification',
+    label: 'HSL Classification using Deep Learning',
+    system: 'Vision · HSL modeling',
+    prompt:
+      'Developed a deep learning based HSL classification system with data preprocessing, model training, prediction analysis, and classification optimization.',
+    response: `End-to-end HSL classification with a disciplined deep learning workflow.
+
+Preprocessing: clean inputs, balance classes where skewed, and stabilize hue/saturation/lightness representations before training.
+
+Training loop: monitor convergence, watch for overfit on thin slices of the color space, and checkpoint models when validation quality plateaus.
+
+Prediction & analysis: inspect confusion structure, surface systematic errors (e.g., low-light hues), and trace them back to data or augmentations.
+
+Optimization: refine augmentations, learning rates, and architecture choices until classification margins improve without blowing up inference cost.`,
+  },
 ];

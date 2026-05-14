@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import useTilt from '../hooks/useTilt.js';
 
-export default function GlassmorphicCard({ children, className = '' }) {
-  const { ref, transform } = useTilt(12);
+export default function GlassmorphicCard({ children, className = '', enableTilt = true, tiltIntensity = 12 }) {
+  const { ref, transform } = useTilt(enableTilt ? tiltIntensity : 0);
 
   return (
     <motion.div
@@ -13,7 +13,7 @@ export default function GlassmorphicCard({ children, className = '' }) {
         transformStyle: 'preserve-3d',
         transform: `rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg)`,
       }}
-      whileHover={{ scale: 1.02 }}
+      whileHover={enableTilt ? { scale: 1.02 } : undefined}
       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     >
       {/* Gradient overlay on hover */}

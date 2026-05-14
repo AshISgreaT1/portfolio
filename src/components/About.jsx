@@ -86,7 +86,7 @@ export default function About() {
                 variants={itemVariants}
               >
                 <motion.div
-                  className="group h-full rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-6 backdrop-blur hover:border-cyan-400/50 transition-all duration-300 cursor-default"
+                  className="group relative h-full rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-6 backdrop-blur hover:border-cyan-400/50 transition-all duration-300 cursor-default"
                   whileHover={{ scale: 1.02, translateY: -4 }}
                 >
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/0 via-transparent to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none" />

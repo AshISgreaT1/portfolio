@@ -49,7 +49,7 @@ export default function Contact() {
           {/* Contact Info */}
           <motion.div
             variants={itemVariants}
-            className="group rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 shadow-card backdrop-blur hover:border-cyan-400/50 transition-all duration-300"
+            className="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 shadow-card backdrop-blur hover:border-cyan-400/50 transition-all duration-300"
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/0 via-transparent to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none" />
 
@@ -102,7 +102,7 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.form
             variants={itemVariants}
-            className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 shadow-card backdrop-blur overflow-hidden group"
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 shadow-card backdrop-blur"
             onSubmit={handleSubmit}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-transparent to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none" />
