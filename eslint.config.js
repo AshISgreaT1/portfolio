@@ -12,7 +12,16 @@ export default [
       sourceType: 'module',
       globals: {
         window: 'readonly',
-        document: 'readonly'
+        document: 'readonly',
+        requestAnimationFrame: 'readonly',
+        cancelAnimationFrame: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
+        alert: 'readonly',
+        IntersectionObserver: 'readonly',
+        console: 'readonly'
       },
       parserOptions: {
         ecmaVersion: 'latest',
@@ -35,7 +44,8 @@ export default [
       'react/no-unknown-property': 'off',
       'react-hooks/immutability': 'off',
       'react-hooks/set-state-in-effect': 'off',
-      'react/prop-types': 'off'
+      'react/prop-types': 'off',
+      'react/no-unescaped-entities': 'warn'
     }
   }
 ];
