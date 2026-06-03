@@ -33,4 +33,4 @@ export function LenisProvider({ children }) {
   }, []);
 
   return <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>;
-}
+};

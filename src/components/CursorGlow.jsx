@@ -7,6 +7,7 @@ const TRAIL_LEN = 6;
 export default function CursorGlow() {
   const reduced = usePrefersReducedMotion();
   const [enabled, setEnabled] = useState(false);
+  const [hoveringInteractive, setHoveringInteractive] = useState(false);
   const [trail, setTrail] = useState([]);
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -33,6 +34,8 @@ export default function CursorGlow() {
     document.body.classList.add('premium-cursor');
 
     const onMove = (e) => {
+      const target = e.target;
+      setHoveringInteractive(Boolean(target?.closest?.('a, button, input, textarea, [data-cursor="magnetic"]')));
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
       ringX.set(e.clientX);
@@ -67,7 +70,7 @@ export default function CursorGlow() {
             transform: 'translate(-50%, -50%)',
             borderRadius: 9999,
             opacity: 0.06 + i * 0.055,
-            background: 'radial-gradient(circle, rgba(79,220,255,0.75), transparent)',
+            background: 'radial-gradient(circle, rgba(0,212,255,0.75), transparent)',
           }}
         />
       ))}
@@ -81,7 +84,7 @@ export default function CursorGlow() {
           translateY: '-50%',
         }}
       >
-        <div className="h-1.5 w-1.5 rounded-full bg-cyanGlow shadow-[0_0_12px_rgba(79,220,255,0.9)]" />
+        <div className="h-1.5 w-1.5 rounded-full bg-cyanGlow shadow-[0_0_12px_rgba(0,212,255,0.9)]" />
       </motion.div>
 
       <motion.div
@@ -93,7 +96,11 @@ export default function CursorGlow() {
           translateY: '-50%',
         }}
       >
-        <div className="h-9 w-9 rounded-full border border-cyanGlow/35 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 backdrop-blur-[2px]" />
+        <motion.div
+          className="h-9 w-9 rounded-full border border-cyanGlow/35 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 backdrop-blur-[2px]"
+          animate={{ scale: hoveringInteractive ? 1.75 : 1, opacity: hoveringInteractive ? 0.82 : 1 }}
+          transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+        />
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/15 to-purple-400/15 blur-md" />
       </motion.div>
     </>

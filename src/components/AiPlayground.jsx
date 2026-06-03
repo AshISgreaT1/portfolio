@@ -62,42 +62,63 @@ export default function AiPlayground() {
   }, [active, fakeResponse, reduced, activeModelId]);
 
   return (
-    <section id="lab" className="relative scroll-mt-28 px-4 py-24 md:py-32">
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40">
-        <div className="absolute left-1/2 top-24 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(79,220,255,0.14),transparent_62%)] blur-2xl" />
+    <section id="lab" className="relative min-h-screen snap-start scroll-mt-28 px-4 py-24 md:py-32 lg:py-40">
+      {/* Background Accents */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute left-1/2 top-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyanGlow/5 blur-[120px]" />
+        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-pinkGlow/5 blur-[100px]" />
       </div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.55 }}
-          className="mb-12 max-w-3xl"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16 text-center"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-cyanGlow">AI Lab</p>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
-            AI Engineering Playground — Real Projects, Real Systems.
+          <motion.div
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyanGlow/30 bg-cyanGlow/8 px-4 py-1.5"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
+            <Sparkles className="h-3.5 w-3.5 text-cyanGlow" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-cyanGlow">AI Lab</span>
+          </motion.div>
+
+          <h2 className="font-display text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+            AI Engineering
+            <br />
+            <span className="bg-gradient-to-r from-cyanGlow via-violetGlow to-pinkGlow bg-clip-text text-transparent">
+              Playground
+            </span>
           </h2>
-          <p className="mt-4 max-w-2xl text-slate-400">
-            An interactive showcase of my deep learning systems, frontend development work, and AI-driven projects with futuristic UI, smooth motion, and modern engineering design.
+
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
+            Interactive showcase of deep learning systems, frontend development work, and AI-driven projects.
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6, delay: 0.05 }}
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(145deg,rgba(12,18,38,0.92),rgba(5,8,22,0.88))] p-6 shadow-card backdrop-blur-2xl sm:p-10"
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="relative overflow-hidden rounded-[2.5rem] border border-white/[0.08] bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent p-6 shadow-2xl backdrop-blur-xl sm:p-10"
         >
-          <div className="pointer-events-none absolute -right-24 top-0 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl" />
-          <div className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+          {/* Ambient Glows */}
+          <div className="pointer-events-none absolute -right-32 top-0 h-72 w-72 rounded-full bg-violetGlow/10 blur-[100px]" />
+          <div className="pointer-events-none absolute -left-32 bottom-0 h-72 w-72 rounded-full bg-cyanGlow/10 blur-[100px]" />
 
-          <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start">
+          <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">
+            {/* Left Panel */}
             <div>
-              <div className="mb-6 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
+              {/* Session Badge */}
+              <div className="mb-6 flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">
                   <Terminal size={14} className="text-cyanGlow" />
                   Session
                 </span>
@@ -111,16 +132,17 @@ export default function AiPlayground() {
                 )}
               </div>
 
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Model</p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              {/* Model Selection */}
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Model</p>
+              <div className="mb-6 flex flex-wrap gap-2">
                 {aiPlaygroundModels.map((m) => (
                   <button
                     key={m.id}
                     type="button"
                     onClick={() => setActiveModelId(m.id)}
-                    className={`min-w-0 flex-1 basis-full rounded-2xl border px-4 py-2.5 text-left text-xs font-semibold leading-snug transition sm:basis-[calc(50%-0.25rem)] lg:basis-[calc(33.333%-0.34rem)] ${
+                    className={`min-w-0 flex-1 basis-full rounded-xl border px-4 py-3 text-left text-sm font-semibold leading-snug transition sm:basis-[calc(50%-0.25rem)] ${
                       activeModelId === m.id
-                        ? 'border-cyanGlow/50 bg-cyanGlow/15 text-cyanGlow shadow-neon'
+                        ? 'border-cyanGlow/50 bg-cyanGlow/15 text-cyanGlow shadow-glow'
                         : 'border-white/10 bg-white/[0.03] text-slate-300 hover:border-white/20 hover:text-white'
                     }`}
                   >
@@ -129,60 +151,69 @@ export default function AiPlayground() {
                 ))}
               </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-ink/40 p-4">
+              {/* Model Info */}
+              <div className="mb-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
                 <div className="flex items-center gap-2 text-xs text-slate-500">
                   <Layers size={14} className="text-cyanGlow/80" />
                   <span className="uppercase tracking-[0.2em]">Used for</span>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{activeModel.usedFor}</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">{activeModel.usedFor}</p>
               </div>
 
-              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Scenarios</p>
-              <div className="mt-3 space-y-2">
+              {/* Scenario Selection */}
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">Scenarios</p>
+              <div className="mb-6 space-y-2">
                 {aiPlaygroundPrompts.map((p) => (
                   <button
                     key={p.id}
                     type="button"
                     onClick={() => setActiveId(p.id)}
-                    className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-left text-sm transition ${
+                    className={`flex w-full items-center justify-between rounded-xl border px-5 py-4 text-left text-sm transition ${
                       activeId === p.id
                         ? 'border-cyanGlow/40 bg-white/[0.06] text-white'
                         : 'border-white/10 bg-white/[0.02] text-slate-300 hover:border-white/20 hover:text-white'
                     }`}
                   >
-                    <span className="pr-2 font-medium leading-snug">{p.label}</span>
+                    <span className="font-medium leading-snug">{p.label}</span>
                     <Sparkles size={16} className={activeId === p.id ? 'text-cyanGlow' : 'text-slate-500'} />
                   </button>
                 ))}
               </div>
 
-              <div className="mt-8 rounded-2xl border border-white/10 bg-ink/40 p-4">
+              {/* Context */}
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5">
                 <div className="flex items-center gap-2 text-xs text-slate-500">
                   <Cpu size={14} className="text-cyanGlow/80" />
                   <span className="uppercase tracking-[0.2em]">Context</span>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{active.prompt}</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">{active.prompt}</p>
               </div>
             </div>
 
-            <div className="relative min-h-[280px] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#070b18]/80 shadow-inner">
-              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <Bot size={16} className="text-cyanGlow" />
-                <span className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Assistant</span>
+            {/* Right Panel - Output */}
+            <div className="relative min-h-[320px] overflow-hidden rounded-2xl border border-white/10 bg-[#030712]/80">
+              {/* Header */}
+              <div className="flex items-center gap-3 border-b border-white/[0.08] px-5 py-4">
+                <Bot size={18} className="text-cyanGlow" />
+                <span className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-400">Assistant</span>
               </div>
-              <div className="relative p-5 sm:p-6">
-                <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(rgba(255,255,255,.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.6)_1px,transparent_1px)] [background-size:28px_28px]" />
+
+              {/* Output */}
+              <div className="relative p-6 sm:p-8">
+                <div className="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] [background-size:28px_28px]" />
                 <AnimatePresence mode="wait">
                   <motion.pre
                     key={`${activeId}-${activeModelId}`}
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
                     transition={{ duration: 0.35 }}
-                    className="relative whitespace-pre-wrap font-mono text-[13px] leading-7 text-slate-200 sm:text-sm"
+                    className="relative whitespace-pre-wrap font-mono text-sm leading-7 text-slate-200"
                   >
                     {output}
-                    {!reduced && busy && <span className="ml-1 inline-block h-4 w-1.5 animate-pulse bg-cyanGlow/80 align-middle" />}
+                    {!reduced && busy && (
+                      <span className="ml-1 inline-block h-4 w-1.5 animate-pulse bg-cyanGlow/80 align-middle" />
+                    )}
                   </motion.pre>
                 </AnimatePresence>
               </div>

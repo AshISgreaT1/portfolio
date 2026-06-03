@@ -1,216 +1,140 @@
-import { motion } from 'framer-motion';
-import { Code2, Network, Mail, Send } from 'lucide-react';
-import SectionHeading from './SectionHeading.jsx';
-import { profile } from '../data/portfolio.js';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Code2, Download, Mail, MapPin, Network, Send, Sparkles } from 'lucide-react';
+import { profile } from '../data/portfolio.js';
+import { useGsapReveal } from '../hooks/useGsapReveal.js';
 
 export default function Contact() {
-  const [hoveredField, setHoveredField] = useState(null);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const scope = useGsapReveal();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Form submitted! Connect this to Formspree or your backend.');
+    const subject = encodeURIComponent(`Portfolio inquiry from ${formState.name || 'visitor'}`);
+    const body = encodeURIComponent(`${formState.message}\n\nReply to: ${formState.email}`);
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+  };
+
+  const handleChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
   return (
-    <section id="contact" className="relative px-4 py-24 md:py-32">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Contact" title="Let&apos;s build something incredible." >
-          Reach out with opportunities, ideas, or just to chat about tech and design.
-        </SectionHeading>
+    <section ref={scope} id="contact" className="relative min-h-screen snap-start px-4 py-24 md:py-32 lg:py-40">
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute left-0 top-0 h-[420px] w-[420px] rounded-full bg-cyanGlow/7 blur-[130px]" />
+        <div className="absolute right-0 bottom-0 h-[420px] w-[420px] rounded-full bg-violetGlow/8 blur-[140px]" />
+      </div>
 
-        <motion.div
-          className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-        >
-          {/* Contact Info */}
-          <motion.div
-            variants={itemVariants}
-            className="group relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 shadow-card backdrop-blur hover:border-cyan-400/50 transition-all duration-300"
-          >
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/0 via-transparent to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none" />
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div data-reveal className="mb-14 text-center">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyanGlow/30 bg-cyanGlow/8 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyanGlow">
+            <Sparkles className="h-3.5 w-3.5" />
+            Contact
+          </div>
+          <h2 className="font-display text-4xl font-bold leading-[0.98] text-white md:text-6xl">
+            Let us build
+            <br />
+            <span className="bg-gradient-to-r from-cyanGlow via-violetGlow to-pinkGlow bg-clip-text text-transparent">
+              something useful.
+            </span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+            Open to frontend internships, collaboration, freelance UI work, and learning-focused engineering teams.
+          </p>
+        </div>
 
-            <div className="relative">
-              <h3 className="font-display text-3xl font-bold text-white">
-                Let&apos;s connect
-              </h3>
-              <p className="mt-4 leading-8 text-slate-300">
-                I&apos;m actively looking for internship and collaboration opportunities. Interested in frontend, full-stack, AI, or creative engineering roles.
-              </p>
+        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div data-reveal className="luxury-panel rounded-3xl p-7 md:p-9">
+            <h3 className="font-display text-3xl font-bold text-white">Reach me directly</h3>
+            <p className="mt-4 leading-8 text-slate-300">
+              Send an internship brief, project idea, or role description. I respond best when the message includes the
+              role, expected stack, and what kind of contribution you need.
+            </p>
 
-              {/* Email */}
-              <motion.a
-                href={`mailto:${profile.email}`}
-                className="mt-8 inline-flex items-center gap-3 rounded-lg px-4 py-3 bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-cyan-400/50 hover:text-cyan-300 transition-all group/email"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Mail size={18} className="group-hover/email:text-cyan-400 transition-colors" />
-                <span>{profile.email}</span>
-              </motion.a>
-
-              {/* Social Links */}
-              <div className="mt-8 flex gap-3">
-                <motion.a
-                  href={profile.socials.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 hover:border-cyan-400/50 hover:text-cyan-300 transition-all"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  title="GitHub"
-                >
-                  <Code2 size={18} />
-                </motion.a>
-                <motion.a
-                  href={profile.socials.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 hover:bg-white/10 hover:border-cyan-400/50 hover:text-cyan-300 transition-all"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  title="LinkedIn"
-                >
-                  <Network size={18} />
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.form
-            variants={itemVariants}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent p-8 shadow-card backdrop-blur"
-            onSubmit={handleSubmit}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-transparent to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 pointer-events-none" />
-
-            <div className="relative space-y-5">
-              {/* Name and Email fields */}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {/* Name Field */}
-                <motion.div
-                  onHoverStart={() => setHoveredField('name')}
-                  onHoverEnd={() => setHoveredField(null)}
-                  className="relative"
-                >
-                  <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
-                    Name
-                  </label>
-                  <motion.input
-                    type="text"
-                    placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/[0.03] text-white placeholder-slate-500 outline-none transition-all duration-300 focus:border-cyan-400/50 focus:bg-white/[0.08]"
-                    initial={{ borderColor: 'rgba(255,255,255,0.1)' }}
-                    animate={{
-                      borderColor:
-                        hoveredField === 'name'
-                          ? 'rgba(79, 220, 255, 0.3)'
-                          : 'rgba(255,255,255,0.1)',
-                    }}
-                  />
-                </motion.div>
-
-                {/* Email Field */}
-                <motion.div
-                  onHoverStart={() => setHoveredField('email')}
-                  onHoverEnd={() => setHoveredField(null)}
-                  className="relative"
-                >
-                  <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
-                    Email
-                  </label>
-                  <motion.input
-                    type="email"
-                    placeholder="you@company.com"
-                    className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/[0.03] text-white placeholder-slate-500 outline-none transition-all duration-300 focus:border-cyan-400/50 focus:bg-white/[0.08]"
-                    initial={{ borderColor: 'rgba(255,255,255,0.1)' }}
-                    animate={{
-                      borderColor:
-                        hoveredField === 'email'
-                          ? 'rgba(79, 220, 255, 0.3)'
-                          : 'rgba(255,255,255,0.1)',
-                    }}
-                  />
-                </motion.div>
-              </div>
-
-              {/* Message Field */}
-              <motion.div
-                onHoverStart={() => setHoveredField('message')}
-                onHoverEnd={() => setHoveredField(null)}
-                className="relative"
-              >
-                <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
-                  Message
-                </label>
-                <motion.textarea
-                  placeholder="Tell me about the opportunity, project, or just say hi!"
-                  className="w-full min-h-32 px-4 py-3 rounded-lg border border-white/10 bg-white/[0.03] text-white placeholder-slate-500 outline-none transition-all duration-300 focus:border-cyan-400/50 focus:bg-white/[0.08] resize-none"
-                  initial={{ borderColor: 'rgba(255,255,255,0.1)' }}
-                  animate={{
-                    borderColor:
-                      hoveredField === 'message'
-                        ? 'rgba(79, 220, 255, 0.3)'
-                        : 'rgba(255,255,255,0.1)',
-                  }}
-                />
-              </motion.div>
-
-              {/* Submit Button */}
-              <motion.button
-                type="submit"
-                className="w-full mt-6 relative inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-white overflow-hidden group/btn"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-cyan-600 to-cyan-700 group-hover/btn:from-cyan-400 group-hover/btn:via-cyan-500 group-hover/btn:to-cyan-600 transition-all duration-300" />
-
-                {/* Shine effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  animate={{
-                    x: ['0%', '100%'],
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                    repeatDelay: 0.5,
-                  }}
-                />
-
-                {/* Text */}
-                <span className="relative flex items-center gap-2">
-                  <Send size={16} />
-                  Send message
+            <div className="mt-8 space-y-3">
+              <a className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-slate-200 transition hover:border-cyanGlow/45 hover:bg-cyanGlow/8" href={`mailto:${profile.email}`}>
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-cyanGlow/10 text-cyanGlow">
+                  <Mail size={18} />
                 </span>
-              </motion.button>
+                <span>
+                  <span className="block text-xs uppercase tracking-[0.25em] text-slate-500">Email</span>
+                  <span className="font-medium">{profile.email}</span>
+                </span>
+              </a>
+              <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-slate-200">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-violetGlow/10 text-violetGlow">
+                  <MapPin size={18} />
+                </span>
+                <span>
+                  <span className="block text-xs uppercase tracking-[0.25em] text-slate-500">Location</span>
+                  <span className="font-medium">{profile.location}</span>
+                </span>
+              </div>
             </div>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a className="ripple-button relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition hover:border-cyanGlow/50 hover:bg-cyanGlow/10" href={profile.socials.github} target="_blank" rel="noreferrer">
+                <Code2 size={16} />
+                GitHub
+              </a>
+              <a className="ripple-button relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition hover:border-cyanGlow/50 hover:bg-cyanGlow/10" href={profile.socials.linkedin} target="_blank" rel="noreferrer">
+                <Network size={16} />
+                LinkedIn
+              </a>
+              <a className="ripple-button relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cyanGlow to-violetGlow px-5 py-3 text-sm font-semibold text-white" href={profile.resume} download>
+                <Download size={16} />
+                Resume
+              </a>
+            </div>
+          </div>
+
+          <motion.form data-reveal className="luxury-panel rounded-3xl p-7 md:p-9" onSubmit={handleSubmit} whileHover={{ y: -4 }}>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block">
+                <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.26em] text-slate-500">Name</span>
+                <input
+                  type="text"
+                  name="name"
+                  value={formState.name}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-cyanGlow/55 focus:bg-white/[0.07]"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.26em] text-slate-500">Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  placeholder="you@company.com"
+                  className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-cyanGlow/55 focus:bg-white/[0.07]"
+                />
+              </label>
+            </div>
+            <label className="mt-5 block">
+              <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.26em] text-slate-500">Message</span>
+              <textarea
+                name="message"
+                value={formState.message}
+                onChange={handleChange}
+                placeholder="Tell me about the role, project, or collaboration..."
+                rows={7}
+                className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-cyanGlow/55 focus:bg-white/[0.07]"
+              />
+            </label>
+            <motion.button
+              type="submit"
+              className="ripple-button relative mt-5 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-cyanGlow via-violetGlow to-cyanGlow bg-[length:200%_100%] px-6 py-4 text-sm font-bold text-white transition hover:bg-[position:100%_0]"
+              whileTap={{ scale: 0.99 }}
+            >
+              <Send size={18} />
+              Send message
+            </motion.button>
           </motion.form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
