@@ -1,8 +1,8 @@
 export const profile = {
   name: 'Ayush Hada',
-  role: 'Frontend Developer & Creative Engineer',
+  role: 'Full Stack Developer & Creative Engineer',
   tagline:
-    'I build cinematic, responsive frontend experiences with React, Three.js, motion systems, and practical product thinking.',
+    'I build end-to-end web apps with React, Node.js, Express, MongoDB, motion systems, and practical product thinking.',
   location: 'Gwalior, Madhya Pradesh',
   hometown: 'Kota, Rajasthan',
   email: 'ayushhada544@gmail.com',
@@ -24,19 +24,19 @@ export const aboutStats = [
   { value: 4, suffix: '+', label: 'Projects Built' },
   { value: 3, suffix: '+', label: 'AI/ML Projects' },
   { value: 14, suffix: '+', label: 'Technologies Used' },
-  { value: 'React', suffix: '', label: 'Primary Stack' }
+  { value: 'React + Node', suffix: '', label: 'Primary Stack' }
 ];
 
 export const timeline = [
   {
     label: 'Now',
-    title: 'Frontend internship ready',
-    copy: 'Sharpening React, animation, WebGL, accessibility, and deployment workflows while applying for practical product teams.'
+    title: 'Full stack internship ready',
+    copy: 'Sharpening React, Node.js, Express, database integration, accessibility, and deployment workflows while applying for practical product teams.'
   },
   {
     label: '2025',
-    title: 'Built portfolio-grade interfaces',
-    copy: 'Created responsive UI systems, animated sections, AI demos, dashboards, and polished project surfaces.'
+    title: 'Built portfolio-grade product surfaces',
+    copy: 'Created responsive UI systems, animated sections, AI demos, dashboards, and polished web apps with practical backend thinking.'
   },
   {
     label: '2024',
@@ -97,7 +97,7 @@ export const intro = {
   title: 'A little more about me',
   lead: 'Hello, my name is Ayush. You already saw the polished bio, so here is the more real version.',
   body: [
-    'I am currently looking for an internship where I can learn, contribute, and grow in web development, cybersecurity, or electronics core roles. I will not pretend that I have years of experience in all of these fields, but I am genuinely eager to explore them and I am already putting in the work.',
+    'I am currently looking for an internship where I can learn, contribute, and grow in full stack web development, cybersecurity, or electronics core roles. I will not pretend that I have years of experience in all of these fields, but I am genuinely eager to explore them and I am already putting in the work.',
     'I am especially enthusiastic about AI. I enjoy trying new AI tools, understanding how they can improve workflows, and getting better at using them smartly instead of just randomly. I would say I am pretty good at working with AI tools, prompts, and finding practical ways to use them.',
     'I may still lack some practical industry experience, but that is exactly why I am looking for the right opportunity. Real experience is what turns curiosity into confidence, and I am ready for that next step.'
   ],
@@ -134,7 +134,7 @@ export const projectFilters = ['All', 'Frontend', 'Full Stack', 'AI', 'Experimen
 export const projects = [
   {
     id: 'ai-lab-interactive',
-    title: 'TaskForge – Team Task Management Platform',
+    title: 'TaskForge - Team Task Management Platform',
     category: 'Full Stack',
     description:
       'A modern task management platform that helps users organize projects, track task progress, and manage workflows through an intuitive and responsive interface.',
@@ -166,7 +166,7 @@ export const aiPlaygroundModels = [
     id: 'react-frontend-stack',
     label: 'TaskForge Productivity Platform',
     usedFor:
-      'Task and project management with real-time tracking, workflow organization, and productivity-focused collaboration.'
+      'Task and project management with real-time tracking, workflow organization, backend integration, and productivity-focused collaboration.'
   },
   {
     id: 'hsl-classification-model',
@@ -193,11 +193,11 @@ Good fit when you need production-minded ML: measurable SNR gains, bounded GPU/C
   },
   {
     id: 'freelance-frontend',
-    label: 'TaskForge – Full Stack Productivity Platform',
+    label: 'TaskForge - Full Stack Productivity Platform',
     system: 'Productivity Platform | Task Management',
     prompt:
-      'TaskForge – Full Stack Productivity Platform',
-    response: `[TaskForge] · Full Stack Productivity Platform
+      'TaskForge - Full Stack Productivity Platform',
+    response: `[TaskForge] - Full Stack Productivity Platform
 
 Project focus: streamlined task and project management for teams and individuals.
 

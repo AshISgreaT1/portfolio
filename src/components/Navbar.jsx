@@ -100,7 +100,7 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Desktop Navigation — GooeyNav */}
+        {/* Desktop Navigation - GooeyNav */}
         <div className="hidden min-w-0 flex-1 justify-center overflow-hidden px-2 lg:flex">
           <GooeyNav
             className="gooey-nav--navbar"

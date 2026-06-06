@@ -26,7 +26,7 @@ export default function Experience() {
             </span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-            A compact timeline of contribution, collaboration, and product-facing frontend work.
+            A compact timeline of contribution, collaboration, and product-facing full stack work.
           </p>
         </div>
 

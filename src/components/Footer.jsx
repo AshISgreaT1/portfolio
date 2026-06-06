@@ -56,7 +56,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
           <p className="text-sm text-slate-500">
-            © {currentYear} {profile.name}. All rights reserved.
+            Copyright {currentYear} {profile.name}. All rights reserved.
           </p>
           <p className="flex items-center gap-2 text-sm text-slate-500">
             Built with <Heart className="h-4 w-4 text-pinkGlow" /> using React, Three.js & Framer Motion

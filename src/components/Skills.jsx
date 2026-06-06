@@ -67,7 +67,7 @@ export default function Skills() {
               Tools for modern
               <br />
               <span className="bg-gradient-to-r from-cyanGlow via-violetGlow to-pinkGlow bg-clip-text text-transparent">
-                frontend systems.
+                full stack systems.
               </span>
             </h2>
           </div>
@@ -79,7 +79,7 @@ export default function Skills() {
         <div data-reveal className="mb-10 relative overflow-visible">
           <div className="relative">
             <CurvedLoop
-              marqueeText="React ✦ JavaScript ✦ Tailwind CSS ✦ Framer Motion ✦ Three.js ✦ GSAP ✦ Node.js ✦ Express ✦ MongoDB ✦ GitHub ✦ Vite ✦ Frontend Developer ✦ Creative Engineer ✦ Problem Solver ✦"
+              marqueeText="React * JavaScript * Tailwind CSS * Framer Motion * Three.js * GSAP * Node.js * Express * MongoDB * REST APIs * GitHub * Vite * Full Stack Developer * Creative Engineer * Problem Solver *"
               speed={2}
               curveAmount={400}
               direction="left"

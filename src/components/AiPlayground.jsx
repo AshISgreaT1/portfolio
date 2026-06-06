@@ -46,7 +46,7 @@ export default function AiPlayground() {
 
   const fakeResponse = useCallback(
     (p) => {
-      const header = `[${activeModel.label}] · ${p.system}\n\n`;
+      const header = `[${activeModel.label}] - ${p.system}\n\n`;
       const body = p.response ?? p.prompt;
       return header + body;
     },
@@ -98,7 +98,7 @@ export default function AiPlayground() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400">
-            Interactive showcase of deep learning systems, frontend development work, and AI-driven projects.
+            Interactive showcase of deep learning systems, full stack development work, and AI-driven projects.
           </p>
         </motion.div>
 

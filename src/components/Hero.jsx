@@ -43,7 +43,7 @@ function HeroContent() {
     return () => ctx.revert();
   }, [reduced]);
 
-  const heroRoles = ['Frontend Developer & Creative Engineer', 'React + Three.js Builder', 'Internship-ready UI Developer'];
+  const heroRoles = ['Full Stack Developer & Creative Engineer', 'React + Node.js Builder', 'Internship-ready Full Stack Developer'];
   const nameParts = profile.name.split(' ');
 
   const containerVariants = {
@@ -74,7 +74,7 @@ function HeroContent() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-cyanGlow shadow-[0_0_12px_rgba(0,212,255,0.8)]"></span>
           </span>
           <span className="text-xs font-semibold uppercase tracking-[0.35em] text-cyanGlow">
-            Available for Frontend Internship
+            Available for Full Stack Internship
           </span>
         </div>
       </motion.div>
@@ -240,7 +240,7 @@ function HeroPortrait() {
       <div className="relative h-full w-full max-w-[520px]">
         <TiltedCard
           imageSrc={HERO_CHARACTER_SRC}
-          altText={`${profile.name} — stylized portrait`}
+          altText={`${profile.name} stylized portrait`}
           containerHeight={'100%'}
           containerWidth={'100%'}
           imageHeight={'100%'}

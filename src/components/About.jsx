@@ -56,9 +56,9 @@ export default function About() {
             </h2>
           </div>
           <p className="max-w-2xl text-lg leading-8 text-slate-300 lg:ml-auto">
-            I am {profile.name}, an Electronics and Telecommunication student who focuses on modern frontend craft:
-            clean interfaces, WebGL presence, useful motion, and practical engineering habits that make a product feel
-            premium without making it hard to use.
+            I am {profile.name}, an Electronics and Telecommunication student who focuses on modern full stack craft:
+            clean interfaces, backend integration, database workflows, useful motion, and practical engineering habits
+            that make a product feel premium without making it hard to use.
           </p>
         </div>
 
@@ -84,19 +84,19 @@ export default function About() {
               <MapPin className="h-5 w-5 text-cyanGlow" />
               <span className="text-sm font-semibold uppercase tracking-[0.25em]">Based in {profile.location}</span>
             </div>
-            <h3 className="font-display text-3xl font-bold text-white">Internship-ready creative frontend developer.</h3>
+            <h3 className="font-display text-3xl font-bold text-white">Internship-ready full stack developer.</h3>
             <div className="mt-6 space-y-5 leading-8 text-slate-300">
               <p>
                 I am originally from {profile.hometown} and currently study at{' '}
                 <a className="text-cyanGlow transition hover:text-white" href={profile.college.url} target="_blank" rel="noreferrer">
                   {profile.college.shortName}
                 </a>
-                . My strongest direction is frontend development, with a growing interest in AI-assisted workflows,
+                . My strongest direction is full stack development, with a growing interest in AI-assisted workflows,
                 cybersecurity basics, and system-level thinking.
               </p>
               <p>
                 I care about details recruiters and users notice: fast loading, responsive spacing, accessible states,
-                readable code, and interfaces that feel confidently designed.
+                readable code, clean APIs, and interfaces that feel confidently designed.
               </p>
             </div>
             <a

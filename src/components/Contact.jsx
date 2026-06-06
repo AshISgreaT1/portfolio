@@ -40,7 +40,7 @@ export default function Contact() {
             </span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-            Open to frontend internships, collaboration, freelance UI work, and learning-focused engineering teams.
+            Open to full stack internships, collaboration, backend or UI work, and learning-focused engineering teams.
           </p>
         </div>
 
